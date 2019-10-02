@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keywordspec name="ExcelRobot" type="library" format="ROBOT" generated="20190911 14:25:45">
+<version>1.0.0b4</version>
+<scope>global</scope>
+<namedargs>yes</namedargs>
+<doc>This test library provides some keywords to allow opening, reading, writing, and saving Excel files from Robot Framework.
+
+*Before running tests*
+
+Prior to running tests, ExcelRobot must first be imported into your Robot test suite.
+
+Example:
+    | Library | ExcelRobot |
+
+To setup some Excel configurations related to date format and number format, use these arguments
+
+    *Excel Date Time format*
+    | Date Format       | Default: `yyyy-mm-dd`         |
+    | Time Format       | Default: `HH:MM:SS AM/PM`     |
+    | Date Time Format  | Default: `yyyy-mm-dd HH:MM`   |
+    For more information, check this article
+    https://support.office.com/en-us/article/format-numbers-as-dates-or-times-418bd3fe-0577-47c8-8caa-b4d30c528309
+
+    *Excel Number format*
+    | Decimal Separator     | Default: `.`  |
+    | Thousand Separator    | Default: `,`  |
+    | Precision             | Default: `2`  |
+
+    *Excel Boolean format*
+    | Boolean Format        | Default: `Yes/No`  |
+
+Example:
+    | Library | ExcelRobot | date_format='dd/mm/yyyy'</doc>
+<init>
+<arguments>
+<arg>date_format=yyyy-mm-dd</arg>
+<arg>time_format=HH:MM:SS AM/PM</arg>
+<arg>datetime_format=yyyy-mm-dd HH:MM</arg>
+<arg>decimal_sep=.</arg>
+<arg>thousand_sep=,</arg>
+<arg>precision=2</arg>
+<arg>bool_format=Yes/No</arg>
+</arguments>
+<doc>Init Excel Keyword with some default configuration.
+
+Excel Date Time format
+https://support.office.com/en-us/article/format-numbers-as-dates-or-times-418bd3fe-0577-47c8-8caa-b4d30c528309</doc>
+<tags>
+</tags>
+</init>
+<kw name="Check Cell Type">
+<arguments>
+<arg>sheet_name</arg>
+<arg>column</arg>
+<arg>row</arg>
+<arg>data_type</arg>
+</arguments>
+<doc>Checks the type of value that is within the cell of the sheet name selected.
+
+Arguments:
+        |  Sheet Name (string)  | The selected sheet that the cell type will be checked from.                                   |
+        |  Column (int)         | The column integer value that will be used to check the cell type.                            |
+        |  Row (int)            | The row integer value that will be used to check the cell type.                               |
+        |  Data Type (string)   | Available options: `DATE`, `TIME`, `DATE_TIME`, `TEXT`, `NUMBER`, `BOOL`, `EMPTY`, `ERROR`    |
+Example:
+
+| *Keywords*           |  *Parameters*                                              |       |
+| Open Excel           |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |   |   |       |
+| Check Cell Type      |  TestSheet1                                        | 0 | 0 | DATE  |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Sheet">
+<arguments>
+<arg>sheet_name</arg>
+</arguments>
+<doc>Creates and appends new Excel worksheet using the new sheet name to the current workbook.
+
+Arguments:
+        |  New Sheet name (string)  | The name of the new sheet added to the workbook.  |
+Example:
+
+| *Keywords*           |  *Parameters*                                      |
+| Open Excel           |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |
+| Create Sheet         |  NewSheet                                          |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Column Count">
+<arguments>
+<arg>sheet_name</arg>
+</arguments>
+<doc>Returns the specific number of columns of the sheet name specified.
+
+Arguments:
+        |  Sheet Name (string)  | The selected sheet that the column count will be returned from. |
+Example:
+
+| *Keywords*          |  *Parameters*                                      |
+| Open Excel          |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |
+| Get Column Count    |  TestSheet1                                        |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Column Values">
+<arguments>
+<arg>sheet_name</arg>
+<arg>column</arg>
+<arg>include_empty_cells=True</arg>
+</arguments>
+<doc>Returns the specific column values of the sheet name specified.
+
+Arguments:
+        |  Sheet Name (string)                      | The selected sheet that the column values will be returned from.   |
+        |  Column (int)                             | The column integer value is indicated to get values.               |
+        |  Include Empty Cells (Default: `True`)    | If `False` then only return cells with values.                     |
+Example:
+
+| *Keywords*           |  *Parameters*                                          |
+| Open Excel           |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |   |
+| Get Column Values    |  TestSheet1                                        | 0 |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Number Of Sheets">
+<arguments>
+</arguments>
+<doc>Returns the number of worksheets in the current workbook.
+
+Example:
+
+| *Keywords*              |  *Parameters*                                      |
+| Open Excel              |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |
+| Get Number of Sheets    |                                                    |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Row Count">
+<arguments>
+<arg>sheet_name</arg>
+</arguments>
+<doc>Returns the specific number of rows of the sheet name specified.
+
+Arguments:
+        |  Sheet Name (string)  | The selected sheet that the row count will be returned from. |
+Example:
+
+| *Keywords*          |  *Parameters*                                      |
+| Open Excel          |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |
+| Get Row Count       |  TestSheet1                                        |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Row Values">
+<arguments>
+<arg>sheet_name</arg>
+<arg>row</arg>
+<arg>include_empty_cells=True</arg>
+</arguments>
+<doc>Returns the specific row values of the sheet name specified.
+
+Arguments:
+        |  Sheet Name (string)                      | The selected sheet that the row values will be returned from.         |
+        |  Row (int)                                | The row integer value value is indicated to get values.               |
+        |  Include Empty Cells (Default: `True`)    | If `False` then only return cells with values.                        |
+Example:
+
+| *Keywords*           |  *Parameters*                                          |
+| Open Excel           |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |   |
+| Get Row Values       |  TestSheet1                                        | 0 |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Sheet Names">
+<arguments>
+</arguments>
+<doc>Returns the names of all the worksheets in the current workbook.
+
+Example:
+
+| *Keywords*              |  *Parameters*                                      |
+| Open Excel              |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |
+| Get Sheets Names        |                                                    |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Sheet Values">
+<arguments>
+<arg>sheet_name</arg>
+<arg>include_empty_cells=True</arg>
+</arguments>
+<doc>Returns the values from the sheet name specified.
+
+Arguments:
+        |  Sheet Name (string                       | The selected sheet that the cell values will be returned from.    |
+        |  Include Empty Cells (Default: `True`)    | If `False` then only return cells with values.                    |
+Example:
+
+| *Keywords*           |  *Parameters*                                      |
+| Open Excel           |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |
+| Get Sheet Values     |  TestSheet1                                        |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Get Workbook Values">
+<arguments>
+<arg>include_empty_cells=True</arg>
+</arguments>
+<doc>Returns the values from each sheet of the current workbook.
+
+Arguments:
+        |  Include Empty Cells (Default: `True`)    | If `False` then only return cells with values.                    |
+Example:
+
+| *Keywords*           |  *Parameters*                                      |
+| Open Excel           |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |
+| Get Workbook Values  |                                                    |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Open Excel">
+<arguments>
+<arg>file_path</arg>
+</arguments>
+<doc>Opens the Excel file to read from the path provided in the file path parameter.
+
+Arguments:
+        |  File Path (string) | The Excel file name or path will be opened. If file name then openning file in current directory.   |
+Example:
+
+| *Keywords*           |  *Parameters*                                      |
+| Open Excel           |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Open Excel To Write">
+<arguments>
+<arg>file_path</arg>
+<arg>new_path=None</arg>
+<arg>override=False</arg>
+</arguments>
+<doc>Opens the Excel file to write from the path provided in the file name parameter.
+In case `New Path` is given, new file will be created based on content of current file.
+
+Arguments:
+        |  File Path (string)           | The Excel file name or path will be opened. If file name then openning file in current directory. |
+        |  New Path                     | New path will be saved.                                                                           |
+        |  Override (Default: `False`)  | If `True`, new file will be overriden if it exists.                                               |
+Example:
+
+| *Keywords*                |  *Parameters*                                      |
+| Open Excel To Write       |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Read Cell Data">
+<arguments>
+<arg>sheet_name</arg>
+<arg>column</arg>
+<arg>row</arg>
+<arg>data_type=None</arg>
+<arg>use_format=True</arg>
+</arguments>
+<doc>Uses the column and row to return the data from that cell.
+
+- `Data Type` indicates explicit data type to convert cell value to correct data type.
+- `Use Format` is False, then cell value will be raw data with correct data type.
+
+Arguments:
+        |  Sheet Name (string)                      | The selected sheet that the cell value will be returned from.             |
+        |  Column (int)                             | The column integer value that the cell value will be returned from.       |
+        |  Row (int)                                | The row integer value that the cell value will be returned from.          |
+        |  Data Type (string)                       | Available options: `TEXT`, DATE`, `TIME`, `DATETIME`, `NUMBER`, `BOOL`    |
+        |  Use Format (boolean) (Default: `True`)   | Use format to convert data to string.                                     |
+Example:
+
+| *Keywords*        |  *Parameters*                                              |
+| Open Excel        |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |   |   |
+| Read Cell Data    |  TestSheet1                                        | 0 | 0 |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Read Cell Data By Name">
+<arguments>
+<arg>sheet_name</arg>
+<arg>cell_name</arg>
+<arg>data_type=None</arg>
+<arg>use_format=True</arg>
+</arguments>
+<doc>Uses the cell name to return the data from that cell.
+
+- `Data Type` indicates explicit data type to convert cell value to correct data type.
+- `Use Format` is False, then cell value will be raw data with correct data type.
+
+Arguments:
+        |  Sheet Name (string)                      | The selected sheet that the cell value will be returned from.             |
+        |  Cell Name (string)                       | The selected cell name that the value will be returned from.              |
+        |  Data Type (string)                       | Available options: `TEXT`, DATE`, `TIME`, `DATETIME`, `NUMBER`, `BOOL`    |
+        |  Use Format (boolean) (Default: `True`)   | Use format to convert data to string.                                     |
+Example:
+
+| *Keywords*                |  *Parameters*                                             |
+| Open Excel                |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |      |
+| Read Cell Data By Name    |  TestSheet1                                        |  A2  |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Save Excel">
+<arguments>
+</arguments>
+<doc>Saves the Excel file that was opened to write before.
+
+Example:
+
+| *Keywords*            |  *Parameters*                                      |
+| Open Excel To Write   |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |                  |
+| Write To Cell         |  TestSheet1                                        |  0  |  0  |  34  |
+| Save Excel            |                                                    |                  |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Write To Cell">
+<arguments>
+<arg>sheet_name</arg>
+<arg>column</arg>
+<arg>row</arg>
+<arg>value</arg>
+<arg>data_type=None</arg>
+</arguments>
+<doc>Write data to cell by using the given sheet name and the given cell that defines by column and row.
+
+If `Data Type` is not provided, `ExcelRobot` will introspect data type from given `value` to define cell type
+
+Arguments:
+        |  Sheet Name (string)                      | The selected sheet that the cell will be modified from.                       |
+        |  Column (int)                             | The column integer value that will be used to modify the cell.                |
+        |  Row (int)                                | The row integer value that will be used to modify the cell.                   |
+        |  Value (string|number|datetime|boolean)   | Raw value or string value then using DataType to decide data type to write    |
+        |  Data Type (string)                       | Available options: `DATE`, `TIME`, `DATE_TIME`, `TEXT`, `NUMBER`, `BOOL`      |
+Example:
+
+| *Keywords*            |  *Parameters*                                                                 |
+| Open Excel            |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |     |     |              |       |
+| Write To Cell         |  TestSheet1                                        |  0  |  0  |  34          |       |
+| Write To Cell         |  TestSheet1                                        |  1  |  1  |  2018-03-29  | DATE  |
+| Write To Cell         |  TestSheet1                                        |  2  |  2  |  YES         | BOOL  |</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Write To Cell By Name">
+<arguments>
+<arg>sheet_name</arg>
+<arg>cell_name</arg>
+<arg>value</arg>
+<arg>data_type=None</arg>
+</arguments>
+<doc>Write data to cell by using the given sheet name and the given cell that defines by name.
+
+If `Data Type` is not provided, `ExcelRobot` will introspect data type from given `value` to define cell type
+
+Arguments:
+        |  Sheet Name (string)                      | The selected sheet that the cell will be modified from.                       |
+        |  Cell Name (string)                       | The selected cell name that the value will be returned from.                  |
+        |  Value (string|number|datetime|boolean)   | Raw value or string value then using DataType to decide data type to write    |
+        |  Data Type (string)                       | Available options: `DATE`, `TIME`, `DATE_TIME`, `TEXT`, `NUMBER`, `BOOL`      |
+Example:
+
+| *Keywords*            |  *Parameters*                                                                     |
+| Open Excel            |  C:\Python27\ExcelRobotTest\ExcelRobotTest.xls  |                      |       |
+| Write To Cell By Name |  TestSheet1                                        |  A1  |  34           |       |
+| Write To Cell By Name |  TestSheet1                                        |  A2  |  2018-03-29   | DATE  |
+| Write To Cell By Name |  TestSheet1                                        |  A3  |  YES          | BOOL  |</doc>
+<tags>
+</tags>
+</kw>
+</keywordspec>

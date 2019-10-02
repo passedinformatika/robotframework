@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<projectConfiguration>
+    <configVersion>2</configVersion>
+    <robotExecEnvironment path="C:/Users/User/AppData/Local/Programs/Python/Python37" interpreter="Python"/>
+    <relativeTo>WORKSPACE</relativeTo>
+    <referencedLibrary type="PYTHON" name="SeleniumLibrary" path="C:/Users/User/AppData/Local/Programs/Python/Python37/Lib/site-packages/SeleniumLibrary/__init__.py"/>
+    <referencedLibrary type="PYTHON" name="ExcelRobot" path="C:/Users/User/AppData/Local/Programs/Python/Python37/Lib/site-packages/ExcelRobot/__init__.py"/>
+    <referencedLibrary type="PYTHON" name="requests" path="C:/Users/User/AppData/Local/Programs/Python/Python37/Lib/site-packages/requests/__init__.py"/>
+    
+    <referencedLibrary type="PYTHON" name="DatabaseLibrary" path="C:/Users/User/AppData/Local/Programs/Python/Python37/Lib/site-packages/Robotframework-Database-Library-master/src/DatabaseLibrary/__init__.py"/>
+    <pythonpath/>
+    <classpath/>
+    <excludedForValidation/>
+    <isValidatedFileSizeCheckingEnabled>true</isValidatedFileSizeCheckingEnabled>
+    <validatedFileMaxSize>1024</validatedFileMaxSize>
+</projectConfiguration>
