@@ -26,12 +26,21 @@ Locator Text    [Arguments]    ${browser}    ${locator}    ${tag}    ${constrain
 	    ...    ELSE    SeleniumLibrary.Get WebElement    //h3[contains(text(),'@{element_parameterek}[0]')]/..//label[contains(text(),'@{element_parameterek}[1]')]/ancestor::*[substring-after(@class, "form-")="group" or substring-before(@class, "group")="form-"]//*[self::input or self::textarea]
 	[Return] 	${element} 	
 Locator Button    [Arguments]    ${browser}    ${locator}    ${tag}    ${constraints}
-    ${element}= 	SeleniumLibrary.Get WebElement    //span[text()[normalize-space() = '${locator}']]/ancestor::button
+    @{element_parameterek} =	Split String	${locator}    ;
+    ${lista_meret}=    Get Length    ${element_parameterek}   
+    ${element}=    Run keyword if    ${lista_meret} < 2    SeleniumLibrary.Get WebElement    //span[text()[normalize-space() = '@{element_parameterek}[0]']]/ancestor::button
+        ...    ELSE    SeleniumLibrary.Get WebElement    //h3[contains(text(),'@{element_parameterek}[0]')]/..//span[text()[normalize-space() = '@{element_parameterek}[1]']]/ancestor::button
     [Return] 	${element} 
 Locator Select    [Arguments]    ${browser}    ${locator}    ${tag}    ${constraints}
-    ${element}= 	SeleniumLibrary.Get WebElement    //label[contains(text(),'${locator}')]/ancestor::*[substring-after(@class, "form-")="group" or substring-before(@class, "group")="form-"]//select
-    [Return] 	${element}
+    @{element_parameterek} =	Split String	${locator}    ;
+    ${lista_meret}=    Get Length    ${element_parameterek}  
+    ${element}=    Run keyword if    ${lista_meret} < 2    SeleniumLibrary.Get WebElement    //label[contains(text(),'@{element_parameterek}[0]')]/ancestor::*[substring-after(@class, "form-")="group" or substring-before(@class, "group")="form-"]//select
+        ...    ELSE    SeleniumLibrary.Get WebElement    //h3[contains(text(),'@{element_parameterek}[0]')]/..//label[contains(text(),'@{element_parameterek}[1]')]/ancestor::*[substring-after(@class, "form-")="group" or substring-before(@class, "group")="form-"]//select
+	[Return] 	${element}
 Locator SelectDate    [Arguments]    ${browser}    ${locator}    ${tag}    ${constraints}
     @{element_parameterek} =	Split String	${locator}    ;
-    ${element}= 	SeleniumLibrary.Get WebElement    //label[contains(text(),'@{element_parameterek}[0]')]/ancestor::*[substring-after(@class, "form-")="group" or substring-before(@class, "group")="form-"]//select[@id='@{element_parameterek}[1]']
-    [Return] 	${element}
+    ${lista_meret}=    Get Length    ${element_parameterek}  
+    ${element}=    Run keyword if    ${lista_meret} < 3    SeleniumLibrary.Get WebElement    //label[contains(text(),'@{element_parameterek}[0]')]/ancestor::*[substring-after(@class, "form-")="group" or substring-before(@class, "group")="form-"]//select[@id='@{element_parameterek}[1]']
+        ...    ELSE    SeleniumLibrary.Get WebElement    //h3[contains(text(),'@{element_parameterek}[0]')]/..//label[contains(text(),'@{element_parameterek}[1]')]/ancestor::*[substring-after(@class, "form-")="group" or substring-before(@class, "group")="form-"]//select[@id='@{element_parameterek}[2]']
+	[Return] 	${element}
+    

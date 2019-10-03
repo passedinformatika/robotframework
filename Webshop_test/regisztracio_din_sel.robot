@@ -11,14 +11,14 @@ Regisztráció
     Headerben kattintás      Sign in
     
     Szövegbeírás             Create an account;Email address                               ${Email address}
-    Gombra kattintás         Create an account
+    Gombra kattintás         Create an account;Create an account
     
     Radio gomb választás     Your personal information;Title                               ${Title}
     Szövegbeírás             First name                                                    ${First Name}
     Szövegbeírás             Last name                                                     ${Last Name}
     Szövegellenőrzés         Email                                                         ${Email address}
     Szövegbeírás             Password                                                      ${Password}
-    Dátumválasztás           Date of Birth;days                                            ${Date of Birth['Days']}
+    Dátumválasztás           Your personal information;Date of Birth;days                  ${Date of Birth['Days']}
     Dátumválasztás           Date of Birth;months                                          ${Date of Birth['Months']}
     Dátumválasztás           Date of Birth;years                                           ${Date of Birth['Years']}
     Szövegbeírás             Your address;First name                                       ${Your Address First Name}
@@ -27,7 +27,7 @@ Regisztráció
     Szövegbeírás             Your address;Address                                          ${Address}
     Szövegbeírás             Your address;Address (Line 2)                                 ${Address2}
     Szövegbeírás             Your address;City                                             ${City}
-    Legördülő beállítás      State                                                         ${State}
+    Legördülő beállítás      Your address;State                                            ${State}
     Szövegbeírás             Your address;Zip/Postal Code                                  ${Zip}
     Legördülő beállítás      Country                                                       ${Country}
     Szövegbeírás             Your address;Additional information                           ${Additional information}
